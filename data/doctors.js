@@ -7,7 +7,7 @@ export const doctorsData = [
     experience: 12,
     qualification: "MBBS, FCPS",
     available: "Sat - Thu, 9:00 AM - 2:00 PM",
-    image: "/images/doctors/doctor-1.jpg",
+    image: "doctor-1.jpg",
     about:
       "Dr. Sarah Ahmed is an experienced cardiologist specializing in heart disease prevention, diagnosis and treatment.",
   },
@@ -19,7 +19,7 @@ export const doctorsData = [
     experience: 9,
     qualification: "MBBS, MD",
     available: "Sun - Thu, 10:00 AM - 3:00 PM",
-    image: "/images/doctors/doctor-2.jpg",
+    image: "doctor-2.jpg",
     about:
       "Dr. Mahmud Hasan specializes in neurological disorders and provides patient-focused treatment.",
   },
@@ -31,7 +31,7 @@ export const doctorsData = [
     experience: 10,
     qualification: "MBBS, FCPS",
     available: "Sat - Wed, 11:00 AM - 4:00 PM",
-    image: "/images/doctors/doctor-3.jpg",
+    image: "doctor-3.jpg",
     about:
       "Dr. Nusrat Jahan provides comprehensive women's healthcare and specializes in maternal care.",
   },
@@ -43,7 +43,7 @@ export const doctorsData = [
     experience: 14,
     qualification: "MBBS, MS",
     available: "Sun - Thu, 9:00 AM - 1:00 PM",
-    image: "/images/doctors/doctor-4.jpg",
+    image: "doctor-4.jpg",
     about:
       "Dr. Tanvir Rahman is an orthopedic surgeon experienced in bone, joint and muscle treatment.",
   },
@@ -55,7 +55,7 @@ export const doctorsData = [
     experience: 8,
     qualification: "MBBS, FCPS",
     available: "Sat - Thu, 2:00 PM - 7:00 PM",
-    image: "/images/doctors/doctor-5.jpg",
+    image: "doctor-5.jpg",
     about:
       "Dr. Farhan Kabir specializes in diagnosing and managing a wide range of adult diseases.",
   },
@@ -67,7 +67,7 @@ export const doctorsData = [
     experience: 7,
     qualification: "MBBS, DD",
     available: "Sat - Wed, 4:00 PM - 8:00 PM",
-    image: "/images/doctors/doctor-6.jpg",
+    image: "doctor-6.jpg",
     about:
       "Dr. Ayesha Rahman specializes in skin, hair and cosmetic dermatology treatments.",
   },

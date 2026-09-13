@@ -1,20 +1,38 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { Search, ChevronLeft, ChevronRight } from "lucide-react";
+import {
+  Search,
+  ChevronLeft,
+  ChevronRight,
+} from "lucide-react";
 import { useDoctors } from "@/context/DoctorContext";
 import DoctorCard from "@/components/DoctorCard";
+import { useSearchParams } from "next/navigation";
+import Navbar from "@/components/Navber";
 
 export default function DoctorsPage() {
   const { doctors } = useDoctors();
 
+  const searchParams = useSearchParams();
+
+  const departmentFromUrl =
+    searchParams.get("department") || "All";
+
   const [search, setSearch] = useState("");
-  const [department, setDepartment] = useState("All");
+  const [department, setDepartment] =
+    useState(departmentFromUrl);
   const [experience, setExperience] = useState("All");
 
   // Pagination
   const [currentPage, setCurrentPage] = useState(1);
+
   const doctorsPerPage = 6;
+
+  // URL থেকে department পরিবর্তন হলে state update হবে
+  useEffect(() => {
+    setDepartment(departmentFromUrl);
+  }, [departmentFromUrl]);
 
   // Filter doctors
   const filteredDoctors = useMemo(() => {
@@ -30,15 +48,18 @@ export default function DoctorsPage() {
       let matchesExperience = true;
 
       if (experience === "5+") {
-        matchesExperience = doctor.experience >= 5;
+        matchesExperience =
+          doctor.experience >= 5;
       }
 
       if (experience === "10+") {
-        matchesExperience = doctor.experience >= 10;
+        matchesExperience =
+          doctor.experience >= 10;
       }
 
       if (experience === "15+") {
-        matchesExperience = doctor.experience >= 15;
+        matchesExperience =
+          doctor.experience >= 15;
       }
 
       return (
@@ -47,7 +68,12 @@ export default function DoctorsPage() {
         matchesExperience
       );
     });
-  }, [doctors, search, department, experience]);
+  }, [
+    doctors,
+    search,
+    department,
+    experience,
+  ]);
 
   // Total pages
   const totalPages = Math.ceil(
@@ -66,11 +92,28 @@ export default function DoctorsPage() {
   // Search/filter করলে page 1 এ যাবে
   useEffect(() => {
     setCurrentPage(1);
-  }, [search, department, experience]);
+  }, [
+    search,
+    department,
+    experience,
+  ]);
 
-  // Page number
+  // যদি filter করার পরে current page আর valid না থাকে
+  useEffect(() => {
+    if (
+      totalPages > 0 &&
+      currentPage > totalPages
+    ) {
+      setCurrentPage(totalPages);
+    }
+  }, [currentPage, totalPages]);
+
+  // Page change
   const handlePageChange = (page) => {
-    if (page >= 1 && page <= totalPages) {
+    if (
+      page >= 1 &&
+      page <= totalPages
+    ) {
       setCurrentPage(page);
 
       window.scrollTo({
@@ -99,7 +142,7 @@ export default function DoctorsPage() {
 
   return (
     <main className="min-h-screen bg-white">
-
+      <Navbar />
       {/* Header */}
       <section className="bg-[#fff8ed] py-20">
         <div className="mx-auto max-w-7xl px-4">
@@ -114,8 +157,8 @@ export default function DoctorsPage() {
             </h1>
 
             <p className="mx-auto mt-4 max-w-2xl text-gray-600">
-              Find experienced and trusted doctors by name,
-              department and experience.
+              Find experienced and trusted doctors by
+              name, department and experience.
             </p>
           </div>
 
@@ -150,7 +193,10 @@ export default function DoctorsPage() {
                 className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3 outline-none transition focus:border-[#ffa500] focus:ring-2 focus:ring-[#ffa500]/20"
               >
                 {departments.map((item) => (
-                  <option key={item} value={item}>
+                  <option
+                    key={item}
+                    value={item}
+                  >
                     {item === "All"
                       ? "All Departments"
                       : item}
@@ -167,7 +213,10 @@ export default function DoctorsPage() {
                 className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3 outline-none transition focus:border-[#ffa500] focus:ring-2 focus:ring-[#ffa500]/20"
               >
                 {experiences.map((item) => (
-                  <option key={item} value={item}>
+                  <option
+                    key={item}
+                    value={item}
+                  >
                     {item === "All"
                       ? "All Experience"
                       : `${item} Years Experience`}
@@ -184,8 +233,9 @@ export default function DoctorsPage() {
       <section className="py-16">
         <div className="mx-auto max-w-7xl px-4">
 
-          {/* Result count */}
+          {/* Result Count */}
           <div className="mb-8 flex items-center justify-between">
+
             <p className="text-gray-600">
               Showing{" "}
               <span className="font-semibold text-[#17202a]">
@@ -196,23 +246,28 @@ export default function DoctorsPage() {
 
             {totalPages > 0 && (
               <p className="text-sm text-gray-500">
-                Page {currentPage} of {totalPages}
+                Page {currentPage} of{" "}
+                {totalPages}
               </p>
             )}
+
           </div>
 
           {/* Doctor Cards */}
           {currentDoctors.length > 0 ? (
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+
               {currentDoctors.map((doctor) => (
                 <DoctorCard
                   key={doctor.id}
                   doctor={doctor}
                 />
               ))}
+
             </div>
           ) : (
             <div className="rounded-2xl border border-dashed border-gray-300 py-20 text-center">
+
               <h3 className="text-xl font-semibold text-[#17202a]">
                 No Doctors Found
               </h3>
@@ -220,6 +275,7 @@ export default function DoctorsPage() {
               <p className="mt-2 text-gray-500">
                 Try changing your search or filter.
               </p>
+
             </div>
           )}
 
@@ -230,7 +286,9 @@ export default function DoctorsPage() {
               {/* Previous */}
               <button
                 onClick={() =>
-                  handlePageChange(currentPage - 1)
+                  handlePageChange(
+                    currentPage - 1
+                  )
                 }
                 disabled={currentPage === 1}
                 className="flex h-10 w-10 items-center justify-center rounded-lg border border-gray-200 bg-white transition hover:border-[#ffa500] hover:bg-[#ffa500] hover:text-white disabled:cursor-not-allowed disabled:opacity-40"
@@ -261,7 +319,9 @@ export default function DoctorsPage() {
               {/* Next */}
               <button
                 onClick={() =>
-                  handlePageChange(currentPage + 1)
+                  handlePageChange(
+                    currentPage + 1
+                  )
                 }
                 disabled={
                   currentPage === totalPages

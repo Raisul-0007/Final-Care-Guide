@@ -1,5 +1,7 @@
 import "./globals.css";
 import { DoctorProvider } from "@/context/DoctorContext";
+import { PatientProvider } from "@/context/PatientContext";
+import { AppointmentProvider } from "@/context/AppointmentContext";
 
 export const metadata = {
   title: "MediCare Hospital",
@@ -11,7 +13,11 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body>
         <DoctorProvider>
-          {children}
+          <PatientProvider>
+            <AppointmentProvider>
+              {children}
+            </AppointmentProvider>
+          </PatientProvider>
         </DoctorProvider>
       </body>
     </html>

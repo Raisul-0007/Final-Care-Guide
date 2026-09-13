@@ -11,9 +11,9 @@ import {
 } from "lucide-react";
 import { motion } from "framer-motion";
 
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 import { useDoctors } from "@/context/DoctorContext";
+import Navbar from "@/components/Navber";
+import Footer from "@/components/Footer";
 
 export default function DoctorDetails() {
   const { id } = useParams();
@@ -26,7 +26,7 @@ export default function DoctorDetails() {
   if (!doctor) {
     return (
       <>
-        <Navbar />
+        <Navbar/>
 
         <main className="flex min-h-[60vh] items-center justify-center bg-[#fffaf2] px-5">
           <div className="text-center">
