@@ -14,6 +14,7 @@ export default function Navbar() {
     { name: "Departments", href: "/departments" },
     { name: "Patients", href: "/patients" },
     { name: "Appointments", href: "/appointments" },
+    { name: "Dashboard", href:"/admin"},
   ];
 
   return (

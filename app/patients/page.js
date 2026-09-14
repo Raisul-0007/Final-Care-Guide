@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { Search, UserRound } from "lucide-react";
+import { Search, UserRound, ChevronLeft, ChevronRight } from "lucide-react";
 import { motion } from "framer-motion";
 import { usePatients } from "@/context/PatientContext";
 import Navbar from "@/components/Navber";
@@ -11,6 +11,7 @@ export default function PatientsPage() {
 
   const [search, setSearch] = useState("");
   const [gender, setGender] = useState("All");
+  const [currentPage, setCurrentPage] = useState(1);
 
   const filteredPatients = useMemo(() => {
     return patients.filter((patient) => {
@@ -27,10 +28,34 @@ export default function PatientsPage() {
     });
   }, [patients, search, gender]);
 
+  // Pagination
+  const patientsPerPage = 6;
+  const totalPages = Math.ceil(
+    filteredPatients.length / patientsPerPage
+  );
+
+  const startIndex = (currentPage - 1) * patientsPerPage;
+
+  const currentPatients = filteredPatients.slice(
+    startIndex,
+    startIndex + patientsPerPage
+  );
+
+  // Reset page when search/filter changes
+  const handleSearch = (e) => {
+    setSearch(e.target.value);
+    setCurrentPage(1);
+  };
+
+  const handleGender = (e) => {
+    setGender(e.target.value);
+    setCurrentPage(1);
+  };
+
   return (
     <main className="min-h-screen bg-white">
-      <Navbar/>
-      {/* Header */}
+      <Navbar />
+
       <section className="bg-[#fff8ed] py-20">
         <div className="mx-auto max-w-7xl px-4 text-center">
           <p className="mb-3 font-semibold uppercase tracking-widest text-[#ffa500]">
@@ -47,11 +72,8 @@ export default function PatientsPage() {
         </div>
       </section>
 
-      {/* Patient List */}
       <section className="py-16">
         <div className="mx-auto max-w-7xl px-4">
-
-          {/* Search */}
           <div className="mb-8 grid gap-4 md:grid-cols-2">
             <div className="relative">
               <Search
@@ -63,14 +85,14 @@ export default function PatientsPage() {
                 type="text"
                 placeholder="Search patient..."
                 value={search}
-                onChange={(e) => setSearch(e.target.value)}
+                onChange={handleSearch}
                 className="w-full rounded-xl border border-gray-200 py-3 pl-11 pr-4 outline-none focus:border-[#ffa500] focus:ring-2 focus:ring-[#ffa500]/20"
               />
             </div>
 
             <select
               value={gender}
-              onChange={(e) => setGender(e.target.value)}
+              onChange={handleGender}
               className="rounded-xl border border-gray-200 bg-white px-4 py-3 outline-none focus:border-[#ffa500]"
             >
               <option value="All">All Gender</option>
@@ -86,9 +108,8 @@ export default function PatientsPage() {
             </span>
           </p>
 
-          {/* Cards */}
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {filteredPatients.map((patient, index) => (
+            {currentPatients.map((patient, index) => (
               <motion.div
                 key={patient.id}
                 initial={{ opacity: 0, y: 30 }}
@@ -153,6 +174,50 @@ export default function PatientsPage() {
               <h3 className="text-xl font-bold">
                 No Patient Found
               </h3>
+            </div>
+          )}
+
+          {/* Pagination */}
+          {totalPages > 1 && (
+            <div className="mt-12 flex items-center justify-center gap-2">
+              <button
+                onClick={() =>
+                  setCurrentPage((prev) => Math.max(prev - 1, 1))
+                }
+                disabled={currentPage === 1}
+                className="flex h-10 w-10 items-center justify-center rounded-lg border border-gray-200 text-gray-600 transition hover:border-[#ffa500] hover:text-[#ffa500] disabled:cursor-not-allowed disabled:opacity-40"
+              >
+                <ChevronLeft size={20} />
+              </button>
+
+              {Array.from(
+                { length: totalPages },
+                (_, index) => index + 1
+              ).map((page) => (
+                <button
+                  key={page}
+                  onClick={() => setCurrentPage(page)}
+                  className={`h-10 w-10 rounded-lg text-sm font-semibold transition ${
+                    currentPage === page
+                      ? "bg-[#ffa500] text-white"
+                      : "border border-gray-200 text-gray-600 hover:border-[#ffa500] hover:text-[#ffa500]"
+                  }`}
+                >
+                  {page}
+                </button>
+              ))}
+
+              <button
+                onClick={() =>
+                  setCurrentPage((prev) =>
+                    Math.min(prev + 1, totalPages)
+                  )
+                }
+                disabled={currentPage === totalPages}
+                className="flex h-10 w-10 items-center justify-center rounded-lg border border-gray-200 text-gray-600 transition hover:border-[#ffa500] hover:text-[#ffa500] disabled:cursor-not-allowed disabled:opacity-40"
+              >
+                <ChevronRight size={20} />
+              </button>
             </div>
           )}
         </div>
