@@ -10,7 +10,7 @@ export default function Hero() {
       <div className="absolute -right-32 -top-32 h-96 w-96 rounded-full bg-[#FFA500]/10 blur-3xl" />
       <div className="absolute -bottom-32 -left-32 h-96 w-96 rounded-full bg-orange-100 blur-3xl" />
 
-      <div className="relative mx-auto grid min-h-[650px] max-w-7xl items-center gap-12 px-5 py-20 lg:grid-cols-2 lg:px-8">
+      <div className="relative mx-auto grid min-h-162.5 max-w-7xl items-center gap-12 px-5 py-20 lg:grid-cols-2 lg:px-8">
 
         <motion.div
           initial={{ opacity: 0, x: -50 }}
@@ -81,7 +81,7 @@ export default function Hero() {
           <div className="absolute -inset-5 rounded-[3rem] bg-[#FFA500]/10 blur-2xl" />
 
           <div className="relative overflow-hidden rounded-[2.5rem] bg-[#FFA500] p-3 shadow-2xl">
-            <div className="flex min-h-[480px] items-end rounded-[2rem] bg-[linear-gradient(to_right,rgba(0,0,0,0.4),rgba(0,0,0,0.1)),url('/ban.jpg')] bg-cover bg-center p-8">
+            <div className="flex min-h-180 items-end rounded-sm bg-[linear-gradient(to_right,rgba(0,0,0,0.4),rgba(0,0,0,0.1)),url('/ban.jpg')] bg-cover bg-center p-8">
               <div className="rounded-2xl bg-white/90 p-6 shadow-xl backdrop-blur">
                 <p className="text-sm font-medium text-[#FFA500]">
                   Emergency Service

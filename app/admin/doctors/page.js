@@ -1,16 +1,8 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import {
-  Plus,
-  Search,
-  Pencil,
-  Trash2,
-  X,
-  Stethoscope,
-} from "lucide-react";
+import { Plus, Search, Pencil, Trash2, X, Stethoscope } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-
 import AdminHeader from "@/components/AdminHeader";
 import { useDoctors } from "@/context/DoctorContext";
 
@@ -139,8 +131,6 @@ export default function AdminDoctorsPage() {
               Add Doctor
             </button>
           </div>
-
-          {/* Search */}
           <div className="mt-8 rounded-2xl border border-gray-100 bg-white p-5 shadow-sm">
             <div className="grid gap-4 md:grid-cols-2">
 
@@ -175,10 +165,9 @@ export default function AdminDoctorsPage() {
             </div>
           </div>
 
-          {/* Desktop table */}
           <div className="mt-6 hidden overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-sm md:block">
             <div className="overflow-x-auto">
-              <table className="w-full min-w-[800px]">
+              <table className="w-full min-w-200">
                 <thead className="border-b border-gray-100 bg-gray-50">
                   <tr>
                     <th className="px-6 py-4 text-left text-xs font-semibold uppercase tracking-wider text-gray-500">
@@ -272,7 +261,6 @@ export default function AdminDoctorsPage() {
             </div>
           </div>
 
-          {/* Mobile cards */}
           <div className="mt-6 space-y-4 md:hidden">
             {filteredDoctors.map((doctor) => (
               <motion.div
@@ -354,7 +342,6 @@ export default function AdminDoctorsPage() {
         </div>
       </main>
 
-      {/* Add/Edit Modal */}
       <AnimatePresence>
         {modal && (
           <motion.div
@@ -544,7 +531,6 @@ export default function AdminDoctorsPage() {
         )}
       </AnimatePresence>
 
-      {/* Delete Modal */}
       <AnimatePresence>
         {deleteId && (
           <motion.div

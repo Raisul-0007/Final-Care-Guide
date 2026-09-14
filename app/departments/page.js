@@ -10,7 +10,6 @@ export default function DepartmentsPage() {
   return (
     <main className="min-h-screen bg-white">
       <Navbar />
-      {/* Hero */}
       <section className="bg-[#fff8ed] py-20">
         <div className="mx-auto max-w-7xl px-4 text-center">
 
@@ -30,7 +29,6 @@ export default function DepartmentsPage() {
         </div>
       </section>
 
-      {/* Departments */}
       <section className="py-16">
         <div className="mx-auto max-w-7xl px-4">
 
@@ -91,7 +89,6 @@ export default function DepartmentsPage() {
         </div>
       </section>
 
-      {/* CTA */}
       <section className="px-4 pb-16">
         <div className="mx-auto max-w-7xl overflow-hidden rounded-3xl bg-[#ffa500] px-6 py-12 text-center text-white md:px-10">
 

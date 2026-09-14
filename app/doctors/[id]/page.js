@@ -2,27 +2,20 @@
 
 import Link from "next/link";
 import { useParams } from "next/navigation";
-import {
-  ArrowLeft,
-  CalendarDays,
-  Clock,
-  GraduationCap,
-  BriefcaseMedical,
-} from "lucide-react";
+import { ArrowLeft, CalendarDays, Clock, GraduationCap, BriefcaseMedical } from "lucide-react";
 import { motion } from "framer-motion";
-
 import { useDoctors } from "@/context/DoctorContext";
 import Navbar from "@/components/Navber";
 import Footer from "@/components/Footer";
 
 export default function DoctorDetails() {
+  
   const { id } = useParams();
   const { doctors } = useDoctors();
 
   const doctor = doctors.find(
     (item) => String(item.id) === String(id)
   );
-
   if (!doctor) {
     return (
       <>
@@ -63,22 +56,21 @@ export default function DoctorDetails() {
             Back to Doctors
           </Link>
 
-          <div className="grid overflow-hidden rounded-[2rem] bg-white shadow-xl lg:grid-cols-[400px_1fr]">
+          <div className="grid overflow-hidden rounded-4px bg-white shadow-xl lg:grid-cols-[400px_1fr]">
 
-            {/* Image */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
-              className="min-h-[450px] bg-orange-50"
+              className="min-h-112.5 bg-orange-50"
             >
+              
               <img
-                src={doctor.image}
+                src={doctor?.image}
                 alt={doctor.name}
                 className="h-full w-full object-cover object-top"
               />
             </motion.div>
 
-            {/* Details */}
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}

@@ -2,16 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import {
-  LayoutDashboard,
-  Stethoscope,
-  Users,
-  CalendarDays,
-  Building2,
-  HeartPulse,
-  ArrowLeft,
-} from "lucide-react";
-
+import { LayoutDashboard, Stethoscope, Users, CalendarDays, Building2, HeartPulse, ArrowLeft } from "lucide-react";
 const menu = [
   { name: "Dashboard", href: "/admin", icon: LayoutDashboard },
   { name: "Doctors", href: "/admin/doctors", icon: Stethoscope },

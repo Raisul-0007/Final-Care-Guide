@@ -1,16 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import {
-  Stethoscope,
-  Users,
-  CalendarDays,
-  Building2,
-  ArrowUpRight,
-  Plus,
-} from "lucide-react";
+import { Stethoscope, Users, CalendarDays, Building2, ArrowUpRight, Plus } from "lucide-react";
 import { motion } from "framer-motion";
-
 import AdminHeader from "@/components/AdminHeader";
 import { useDoctors } from "@/context/DoctorContext";
 

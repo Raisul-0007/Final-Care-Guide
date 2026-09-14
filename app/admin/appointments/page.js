@@ -1,14 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import {
-  Plus,
-  Search,
-  Pencil,
-  Trash2,
-  X,
-  CalendarDays,
-} from "lucide-react";
+import { Plus, Search, Pencil, Trash2, X, CalendarDays } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useAppointments } from "@/context/AppointmentContext";
 
@@ -34,8 +27,7 @@ export default function AdminAppointmentsPage() {
   const [status, setStatus] = useState("All");
 
   const [modal, setModal] = useState(false);
-  const [editingAppointment, setEditingAppointment] =
-    useState(null);
+  const [editingAppointment, setEditingAppointment] = useState(null);
 
   const [deleteId, setDeleteId] = useState(null);
 
@@ -130,14 +122,12 @@ export default function AdminAppointmentsPage() {
 
         <button
           onClick={openAddModal}
-          className="flex items-center justify-center gap-2 rounded-xl bg-[#ffa500] px-5 py-3 font-semibold text-white shadow-md hover:bg-[#e99400]"
-        >
+          className="flex items-center justify-center gap-2 rounded-xl bg-[#ffa500] px-5 py-3 font-semibold text-white shadow-md hover:bg-[#e99400]" >
           <Plus size={20} />
           Add Appointment
         </button>
       </div>
 
-      {/* Filters */}
       <div className="mb-6 rounded-2xl bg-white p-4 shadow-sm">
         <div className="grid gap-4 md:grid-cols-2">
 
@@ -170,10 +160,9 @@ export default function AdminAppointmentsPage() {
         </div>
       </div>
 
-      {/* Table */}
       <div className="overflow-hidden rounded-2xl bg-white shadow-sm">
         <div className="overflow-x-auto">
-          <table className="w-full min-w-[900px]">
+          <table className="w-full min-w-225">
             <thead className="bg-[#fff5e6]">
               <tr>
                 <th className="px-5 py-4 text-left">
@@ -282,7 +271,6 @@ export default function AdminAppointmentsPage() {
         </div>
       </div>
 
-      {/* Add/Edit Modal */}
       <AnimatePresence>
         {modal && (
           <motion.div
@@ -401,7 +389,6 @@ export default function AdminAppointmentsPage() {
         )}
       </AnimatePresence>
 
-      {/* Delete Modal */}
       <AnimatePresence>
         {deleteId && (
           <motion.div

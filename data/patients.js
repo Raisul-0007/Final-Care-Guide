@@ -84,7 +84,7 @@ export const patientsData = [
     phone: "+880 1918-990011",
     email: "mim@example.com",
     bloodGroup: "O+",
-    address: "Khilgaon, Dhaka",
+    address: "Lalbagh, Dhaka",
     status: "Active",
   },
 ];

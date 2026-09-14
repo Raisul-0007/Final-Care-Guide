@@ -1,11 +1,7 @@
 "use client";
 
 import { Suspense, useEffect, useMemo, useState } from "react";
-import {
-Search,
-ChevronLeft,
-ChevronRight,
-} from "lucide-react";
+import { Search, ChevronLeft, ChevronRight } from "lucide-react";
 import { useDoctors } from "@/context/DoctorContext";
 import DoctorCard from "@/components/DoctorCard";
 import { useSearchParams } from "next/navigation";
@@ -16,8 +12,7 @@ const { doctors } = useDoctors();
 
 const searchParams = useSearchParams();
 
-const departmentFromUrl =
-searchParams.get("department") || "All";
+const departmentFromUrl = searchParams.get("department") || "All";
 
 const [search, setSearch] = useState("");
 const [department, setDepartment] =
@@ -138,7 +133,6 @@ return (
 <main className="min-h-screen bg-white">
 <Navbar />
 
-  {/* Header */}
   <section className="bg-[#fff8ed] py-20">
     <div className="mx-auto max-w-7xl px-4">
 
@@ -157,11 +151,9 @@ return (
         </p>
       </div>
 
-      {/* Search & Filters */}
       <div className="mt-10 rounded-2xl bg-white p-5 shadow-lg">
         <div className="grid gap-4 md:grid-cols-3">
 
-          {/* Search */}
           <div className="relative">
             <Search
               size={20}
@@ -179,7 +171,6 @@ return (
             />
           </div>
 
-          {/* Department */}
           <select
             value={department}
             onChange={(e) =>
@@ -199,7 +190,6 @@ return (
             ))}
           </select>
 
-          {/* Experience */}
           <select
             value={experience}
             onChange={(e) =>
@@ -224,11 +214,9 @@ return (
     </div>
   </section>
 
-  {/* Doctors */}
   <section className="py-16">
     <div className="mx-auto max-w-7xl px-4">
 
-      {/* Result Count */}
       <div className="mb-8 flex items-center justify-between">
 
         <p className="text-gray-600">
@@ -248,7 +236,6 @@ return (
 
       </div>
 
-      {/* Doctor Cards */}
       {currentDoctors.length > 0 ? (
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
 
@@ -274,11 +261,9 @@ return (
         </div>
       )}
 
-      {/* Pagination */}
       {totalPages > 1 && (
         <div className="mt-12 flex items-center justify-center gap-2">
 
-          {/* Previous */}
           <button
             onClick={() =>
               handlePageChange(
@@ -291,7 +276,6 @@ return (
             <ChevronLeft size={20} />
           </button>
 
-          {/* Page Numbers */}
           {Array.from(
             { length: totalPages },
             (_, index) => index + 1
@@ -311,7 +295,6 @@ return (
             </button>
           ))}
 
-          {/* Next */}
           <button
             onClick={() =>
               handlePageChange(

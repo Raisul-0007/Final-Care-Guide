@@ -28,7 +28,6 @@ export default function PatientsPage() {
     });
   }, [patients, search, gender]);
 
-  // Pagination
   const patientsPerPage = 6;
   const totalPages = Math.ceil(
     filteredPatients.length / patientsPerPage
@@ -41,7 +40,6 @@ export default function PatientsPage() {
     startIndex + patientsPerPage
   );
 
-  // Reset page when search/filter changes
   const handleSearch = (e) => {
     setSearch(e.target.value);
     setCurrentPage(1);

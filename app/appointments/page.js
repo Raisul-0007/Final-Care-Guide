@@ -47,7 +47,6 @@ export default function AppointmentPage() {
     <main className="min-h-screen bg-[#fff8ed] py-16">
       <div className="mx-auto max-w-4xl px-4">
         
-        {/* Header */}
         <div className="mb-10 text-center">
           <p className="mb-3 font-semibold uppercase tracking-widest text-[#ffa500]">
             Appointment
@@ -63,14 +62,12 @@ export default function AppointmentPage() {
           </p>
         </div>
 
-        {/* Form */}
         <form
           onSubmit={handleSubmit}
           className="rounded-3xl bg-white p-6 shadow-xl md:p-10"
         >
           <div className="grid gap-6 md:grid-cols-2">
 
-            {/* Patient Name */}
             <div>
               <label className="mb-2 block font-medium text-[#17202a]">
                 Patient Name
@@ -94,7 +91,6 @@ export default function AppointmentPage() {
               </div>
             </div>
 
-            {/* Phone */}
             <div>
               <label className="mb-2 block font-medium text-[#17202a]">
                 Phone Number
@@ -118,7 +114,6 @@ export default function AppointmentPage() {
               </div>
             </div>
 
-            {/* Email */}
             <div>
               <label className="mb-2 block font-medium text-[#17202a]">
                 Email Address
@@ -141,7 +136,6 @@ export default function AppointmentPage() {
               </div>
             </div>
 
-            {/* Department */}
             <div>
               <label className="mb-2 block font-medium text-[#17202a]">
                 Department
@@ -164,7 +158,6 @@ export default function AppointmentPage() {
               </select>
             </div>
 
-            {/* Doctor */}
             <div>
               <label className="mb-2 block font-medium text-[#17202a]">
                 Select Doctor
@@ -199,7 +192,6 @@ export default function AppointmentPage() {
               </select>
             </div>
 
-            {/* Date */}
             <div>
               <label className="mb-2 block font-medium text-[#17202a]">
                 Appointment Date
@@ -222,7 +214,6 @@ export default function AppointmentPage() {
               </div>
             </div>
 
-            {/* Time */}
             <div>
               <label className="mb-2 block font-medium text-[#17202a]">
                 Appointment Time
@@ -245,7 +236,6 @@ export default function AppointmentPage() {
               </div>
             </div>
 
-            {/* Message */}
             <div className="md:col-span-2">
               <label className="mb-2 block font-medium text-[#17202a]">
                 Additional Message
@@ -261,7 +251,6 @@ export default function AppointmentPage() {
               />
             </div>
 
-            {/* Submit */}
             <div className="md:col-span-2">
               <button
                 type="submit"
